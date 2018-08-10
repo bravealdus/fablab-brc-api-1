@@ -2,9 +2,9 @@ from flask import request, jsonify
 from app import app, db
 
 
-@app.route('/flask-runs')
+@app.route('/')
 def index():
-    return 'Yes it is!'
+    return 'Yes, it works!'
 
 
 @app.route('/create-user', methods=['GET', 'POST'])

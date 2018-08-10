@@ -16,6 +16,5 @@
 ### dev
 `flask run`
 
-### deploy in heroku (or others)
-`git push heroku master`
-`gunicorn app:ap`
+### live demo
+https://fablab-brc-api-1.herokuapp.com/
