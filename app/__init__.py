@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # DB config
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI') or 'postgresql://localhost:5432/fablab-1'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') or 'postgresql://localhost:5432/fablab-1'
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
