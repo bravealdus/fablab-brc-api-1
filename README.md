@@ -1,19 +1,18 @@
 # fablab-incbations
 
-### setup
-`. venv/bin/activate`
-
+### env varibales
 `export FLASK_APP=app`
 
-`export FLASK_ENV=development`
+`export FLASK_ENV=development` or `export FLASK_ENV=production`
 
+### local setup for dev
+
+`. venv/bin/activate`
+`python3 -m venv venv`
+`pip install pipenv`
 `pipenv install`
-
 `flask db init`
-
 `flask db upgrade`
-
-### dev
 `flask run`
 
 ### live demo
