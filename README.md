@@ -7,12 +7,18 @@
 
 ### local setup for dev
 
-`. venv/bin/activate`
 `python3 -m venv venv`
+
+`source venv/bin/activate`
+
 `pip install pipenv`
+
 `pipenv install`
+
 `flask db init`
+
 `flask db upgrade`
+
 `flask run`
 
 ### live demo
