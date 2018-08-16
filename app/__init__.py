@@ -12,8 +12,5 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') or 'postgresql
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-# Not used yet
 from .models.all_models import *
-
-
 from .routes.all_routes import *
