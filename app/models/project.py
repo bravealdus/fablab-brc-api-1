@@ -12,5 +12,16 @@ class Project(db.Model):
 	participants = db.relationship('User', secondary=participants, lazy='subquery', backref=db.backref('projects', lazy=True))
 
 
+	def tojson(self):
+		return {
+			'id': self.id,
+			'title': self.title,    
+			'description': self.description,
+			'participants': self.participants
+		}
+
+	def __repr__(self):
+		return str(self.tojson())
+
 
 
