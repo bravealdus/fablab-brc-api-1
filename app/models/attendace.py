@@ -8,6 +8,6 @@ class Attendace(db.Model):
     project_status = db.Column(db.String(600), unique=False, nullable=True)
 
     def __repr__(self):
-        return '<Asistencia {0} {1}>'.format(self.date, self.user_email, self.project_title)
+        return '<Asistencia {0} {1} {2}>'.format(self.date, self.user_email, self.project_title)
 
 
