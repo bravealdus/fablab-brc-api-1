@@ -41,9 +41,9 @@ def create_prject():
 @app.route('/check-in', methods=['GET', 'POST'])
 def check_in():
 	args = request.get_json() if request.is_json else request.args
-	last_checkin = Attendace.query.filter_by(user_email=args['user_email']).order_by(Attendace.id.desc()).first().date
+	last_checkin = Attendace.query.filter_by(user_email=args['user_email']).order_by(Attendace.id.desc()).first()
 	
-	if last_checkin.date() < date.today():
+	if last_checkin == None or last_checkin.date.date() < date.today():
 		last_checkin = date.today()
 		attendace = Attendace(
 			user_email=args['user_email'],
@@ -58,7 +58,7 @@ def check_in():
 		'args': args, 
 		'Host': request.headers['Host'],
 		'result': {
-			'date': last_checkin
+			'date': last_checkin.date
 		}
 	}
 	return jsonify(res)
