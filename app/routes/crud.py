@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from app import app, db, User, Attendace, Project
-from datetime import date
+from datetime import date, datetime
 
 @app.route('/')
 def index():
@@ -41,10 +41,14 @@ def create_prject():
 @app.route('/check-in', methods=['GET', 'POST'])
 def check_in():
 	args = request.get_json() if request.is_json else request.args
-	last_checkin = Attendace.query.filter_by(user_email=args['user_email']).order_by(Attendace.id.desc()).first()
+	last_checkin = (Attendace.query
+					.filter_by(user_email=args['user_email'])
+					.order_by(Attendace.id.desc())
+					.first())
 	
-	if last_checkin == None or last_checkin.date.date() < date.today():
-		last_checkin = date.today()
+	already_done = True
+	if last_checkin is None or last_checkin.date.date() < date.today():
+		already_done = False
 		attendace = Attendace(
 			user_email=args['user_email'],
 			project_title=args['project_title'],
@@ -58,7 +62,9 @@ def check_in():
 		'args': args, 
 		'Host': request.headers['Host'],
 		'result': {
-			'date': last_checkin.date
+			'date': last_checkin.date if last_checkin else datetime.now(),
+			'already': already_done
+			
 		}
 	}
 	return jsonify(res)

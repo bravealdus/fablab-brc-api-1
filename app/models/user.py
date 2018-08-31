@@ -11,7 +11,6 @@ class User(db.Model):
     # projects = db.relationship('Project', lazy='subquery', backref=db.backref('users', lazy=True))
 
     def tojson(self):
-    	print('\n\n\n\n\n\n\n', self.projects)
     	return {
         	'id': self.id,
         	'role': self.role,    

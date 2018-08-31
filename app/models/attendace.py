@@ -7,7 +7,17 @@ class Attendace(db.Model):
     user_email = db.Column(db.String(600), unique=False, nullable=True)
     project_status = db.Column(db.String(600), unique=False, nullable=True)
 
+
+    def tojson(self):
+        return {
+           'id': self.id,
+           'date': self.date,
+           'project_title': self.project_title,
+           'user_email': self.user_email,
+           'project_status': self.project_status 
+        }
+
     def __repr__(self):
-        return '<Asistencia {0} {1} {2}>'.format(self.date, self.user_email, self.project_title)
+        return str(self.tojson())
 
 
